@@ -1,0 +1,13 @@
+package com.dev.encapsulation;
+
+public class DogData {
+
+	public static void main(String[] args) {
+		Dog d1=new Dog();
+		d1.setAge(1);
+		d1.setBreed("Dober Man");
+		d1.setColor("Black");
+		d1.setName("Shiro");
+	}
+
+}

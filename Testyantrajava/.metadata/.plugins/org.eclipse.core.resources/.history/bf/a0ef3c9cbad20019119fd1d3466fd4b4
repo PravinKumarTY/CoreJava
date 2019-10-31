@@ -1,0 +1,62 @@
+package com.dev.test;
+
+public class EmployeeMainOperation {
+
+	public static void main(String[] args) {
+		EmployeeInterfaceImpl ei=new EmployeeInterfaceImpl();
+		Employee e=new Employee();
+		e.setEmpId(1000);
+		e.setEname("Pravin Kumar");
+		e.setEmail("pravinkumar1892@gmail.com");
+		e.setPassword("pravin1234@");
+		e.setSalary(20000);
+		
+		Employee e1=new Employee();
+		e1.setEmpId(1001);
+		e1.setEname("Prashant Kumar");
+		e1.setEmail("prashantkumar@gmail.com");
+		e1.setPassword("prashant1234@");
+		e1.setSalary(25000);
+		
+		boolean newAddedEmp=ei.addEmployee(e);
+		if(newAddedEmp) {
+			System.out.println("New Employee added");
+		}else {
+			System.out.println("New Employee is not added");
+		}
+		boolean newAddedEmp1=ei.addEmployee(e1);
+		if(newAddedEmp1) {
+			System.out.println("New Employee added");
+		}else {
+			System.out.println("New Employee is not added");
+		}
+		
+        System.out.println("Employee Record based on empId.:");
+		ei.displayEmployee(1000);
+		System.out.println("Before Removing Emplist...");
+		ei.showEmpList();
+		boolean removedEmp=ei.removeEmployee(1000);
+		if(removedEmp) {
+			System.out.println("Employee Removed successfulyy");
+		}else {
+			System.out.println("Employee not found");
+		}
+		System.out.println("Afyter removing employee list..:");
+		ei.showEmpList();
+		
+		Employee e2=new Employee();
+		e2.setEname("Raman");
+		e2.setEmail("raman@gmail.com");
+		e2.setPassword("raman123#");
+		e2.setSalary(30000);
+		
+		boolean updateRecord=ei.updateEmployee(1001,e2);
+		if(updateRecord) {
+			System.out.println("Updated ");
+		}else {
+			System.out.println("Record not found.");
+		}
+		System.out.println("After updation all emloyee list..:");
+		ei.showEmpList();
+	}
+}

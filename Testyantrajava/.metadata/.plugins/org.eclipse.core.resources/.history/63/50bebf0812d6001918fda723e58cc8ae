@@ -1,0 +1,17 @@
+package com.dev.operations;
+
+import java.util.Scanner;
+
+import com.dev.services.UserServiceImpl;
+import com.dev.services.UserServices;
+
+public class CreateProfile {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		UserServices us=new UserServiceImpl();
+		
+		
+	}
+
+}

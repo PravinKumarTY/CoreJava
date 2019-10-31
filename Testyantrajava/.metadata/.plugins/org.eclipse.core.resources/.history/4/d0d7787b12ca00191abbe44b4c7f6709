@@ -1,0 +1,14 @@
+package com.dev.encapsulation;
+
+public class StudentData {
+
+	public static void main(String[] args) {
+		Student s=new Student();
+		s.setRegno(274847);
+		s.setName("Pravin kumar");
+		s.setEmail("pravinkumar@gmail.com");
+		s.setPassword("1234");
+
+	}
+
+}

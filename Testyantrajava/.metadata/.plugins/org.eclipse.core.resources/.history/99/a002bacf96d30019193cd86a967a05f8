@@ -1,0 +1,8 @@
+package com.dev.thread;
+
+public class T1 {
+	public static void main(String[] args) {
+		System.out.println("Main thread started...");
+		System.out.println("Main thread terminated....");
+	}
+}

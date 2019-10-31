@@ -1,0 +1,130 @@
+package com.testyantra.div;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class MusicPlayerOperation {
+
+	public static void main(String[] args) {
+		MusicPlayerOperationService mo=new MusicPlayerOperationService();
+		Scanner sc=new Scanner(System.in);
+		ResultSet rs=null;
+		
+		System.out.println("Press 1 for Play Song.");
+		System.out.println("Press 2 for Search a song.");
+		System.out.println("Press 3 for Show All the songs.");
+		System.out.println("Presss 4 for to Operate Music Player.");
+		
+		System.out.println("Please Press any key..");
+		int choise=sc.nextInt();
+		switch (choise) {
+		case 1:
+			System.out.println("Press A for play All");
+			System.out.println("Press B for play Random ");
+			System.out.println("Press C for play particular song");
+			String playChoiseStr=sc.next();
+			char playMusicCh=playChoiseStr.charAt(0);
+			switch (playMusicCh) {
+			case 'A':
+			    rs=mo.getAllSongs();
+				try {
+					while (rs.next()) {
+						System.out.println("Id..:"+rs.getInt("song_id")+",  Song Title..:"+rs.getString("song_title")+", Artist Name..:"+rs.getString("artist_name")+" and Album..:"+rs.getString("album_name"));	
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				break;
+			case 'B':
+			    rs=mo.playRandomSong();
+			    System.out.println(rs);
+			    try {
+					while (rs.next()) {
+						System.out.println("Id..:"+rs.getInt("song_id")+",  Song Title..:"+rs.getString("song_title")+", Artist Name..:"+rs.getString("artist_name")+" and Album..:"+rs.getString("album_name"));
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				break;
+			case 'C':
+				System.out.println("Enter Song name..");
+				String songname=sc.next();
+				rs=mo.getParticularSong(songname);
+				try {
+					while (rs.next()) {
+						System.out.println("Id..:"+rs.getInt("song_id")+",  Song Title..:"+rs.getString("song_title")+", Artist Name..:"+rs.getString("artist_name")+" and Album..:"+rs.getString("album_name"));
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				break;
+			default:
+				System.out.println("");
+				break;
+			}
+			
+			break;
+		case 2:
+			break;
+		case 3:
+			rs=mo.getAllSongs();
+			try {
+				while (rs.next()) {
+					System.out.println("Id..:"+rs.getInt("song_id")+",  Song Title..:"+rs.getString("song_title")+", Artist Name..:"+rs.getString("artist_name")+" and Album..:"+rs.getString("album_name"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			break;
+		case 4:
+			System.out.println("Press A for insert song");
+			System.out.println("Press B for edit song");
+			System.out.println("Press C for delete a song");
+
+			
+			String updateChoiseStr=sc.next();
+			char updateChoiseCh=updateChoiseStr.charAt(0);
+			switch (updateChoiseCh) {
+			case 'A':
+				System.out.println("Enter Id");
+				int id=sc.nextInt();
+				System.out.println("Enter Song_title");
+				String song_title=sc.nextLine();
+				System.out.println("Enter artist name..:");
+				String artist_name=sc.nextLine();
+				System.out.println("Enter album name.");
+				String album_name=sc.nextLine();
+				System.out.println("Enter Album location..");
+				String album_location=sc.nextLine();
+				System.out.println("Enter Description..");
+				String description=sc.nextLine();
+				mo.insertSong(id, song_title, artist_name, album_name, album_location, description);
+				break;
+			case 'B':
+				System.out.println("Enter song id..");
+				int songupdateId=sc.nextInt();
+				
+				break;
+		    case 'C':
+		    	System.out.println("Enter song_id..");
+		    	int songId=sc.nextInt();
+		    	mo.deleteSong(songId);
+		    	break;
+
+			default:
+				
+				break;
+			}
+			
+			break;
+		default:
+			System.out.println("Invalid option.....");
+			break;
+		}
+		
+		
+
+	}
+
+}

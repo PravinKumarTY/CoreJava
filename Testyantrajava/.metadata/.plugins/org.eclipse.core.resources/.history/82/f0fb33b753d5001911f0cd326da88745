@@ -1,0 +1,28 @@
+package com.dev.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import com.mysql.jdbc.Driver;
+
+public class MyFirstJDBC {
+
+	public static void main(String[] args) {
+		Connection conn=null;
+		try {
+			//Load the Driver.
+			java.sql.Driver div=new Driver();
+			DriverManager.registerDriver(div);
+			System.out.println("Driver Loaded..");
+			//Get Connection Via Driver..
+			String dbUrl="jdbc:mysql://localhost:3306/ust_ty_db?username=root&password=root";
+			conn=DriverManager.getConnection(dbUrl);
+			System.out.println("Connection Estd...."+conn);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

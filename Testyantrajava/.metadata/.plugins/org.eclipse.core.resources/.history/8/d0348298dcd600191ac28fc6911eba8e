@@ -1,0 +1,28 @@
+package com.testyantra.div;
+
+import java.io.FileReader;
+import java.sql.ResultSet;
+import java.util.Properties;
+
+public class MusicPlayerOperationService {
+  public MusicPlayerOperationService() {
+	  try {
+		//Load the Driver   
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("Diver Loaded");
+		
+		String filePath="C:\\Users\\admin\\Desktop\\db.properties";
+		FileReader reader=new FileReader(filePath);
+		Properties prop=new Properties();
+		
+		String dbUrl=prop.getProperty();
+		System.out.println("dbUrl..:"+dbUrl);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+  }
+  
+  
+
+}

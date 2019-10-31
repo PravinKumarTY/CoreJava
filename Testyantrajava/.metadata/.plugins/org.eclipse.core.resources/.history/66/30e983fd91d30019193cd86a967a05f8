@@ -1,0 +1,23 @@
+package com.dev.lambdaexpression;
+
+public class Test{
+
+	public static void main(String[] args) {
+		//Provideing implementaion of functional interface
+	    FuncInt f=()->{
+	    	for(int i=1; i<=10; i++) {
+	    		System.out.println("i="+i);
+	    	}
+	    };
+	    //calling the abstract method 
+	    f.printVal();
+	   
+	    
+	    //implementation of add method
+	    AddOprInterface add=(int a,int b)->{return a+b;};
+	    int sum=add.add(10,20);
+	    System.out.println("Sum ..:"+sum);
+	  
+	}
+
+}

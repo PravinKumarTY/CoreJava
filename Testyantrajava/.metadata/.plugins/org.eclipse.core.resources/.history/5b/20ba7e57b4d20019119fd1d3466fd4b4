@@ -1,0 +1,51 @@
+package com.dev.test;
+
+public class EmployeeMainOperation {
+
+	public static void main(String[] args) {
+		EmployeeInterfaceImpl ei=new EmployeeInterfaceImpl();
+		Employee e=new Employee();
+		e.setEmpId(1000);
+		e.setEname("Pravin Kumar");
+		e.setEmail("pravinkumar1892@gmail.com");
+		e.setPassword("pravin1234@");
+		e.setSalary(20000);
+		
+		Employee e1=new Employee();
+		e1.setEmpId(1001);
+		e1.setEname("Prashant Kumar");
+		e1.setEmail("prashantkumar@gmail.com");
+		e1.setPassword("prashant1234@");
+		e1.setSalary(25000);
+		
+		boolean newAddedEmp=ei.addEmployee(e);
+		if(newAddedEmp) {
+			System.out.println("New Employee added");
+		}else {
+			System.out.println("New Employee is not added");
+		}
+		boolean newAddedEmp1=ei.addEmployee(e1);
+		if(newAddedEmp1) {
+			System.out.println("New Employee added");
+		}else {
+			System.out.println("New Employee is not added");
+		}
+       
+		/*ei.displayEmployee(1000);
+		
+		boolean removedEmp=ei.removeEmployee(1000);
+		if(removedEmp) {
+			System.out.println("Employee Removed successfulyy");
+		}else {
+			System.out.println("Employee not found");
+		}
+		
+		boolean updateRecord=ei.updateEmployee(e);
+		if(updateRecord) {
+			System.out.println("Updated ");
+		}else {
+			System.out.println("Record not found.");
+		}*/
+		ei.showEmp();
+	}
+}

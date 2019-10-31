@@ -1,0 +1,9 @@
+package com.dev.thread;
+
+public class T2 extends Thread {
+  @Override
+  public void run() {
+	System.out.println("T2 thread started ....");
+	System.out.println("T2 thread terminated...");
+  }
+}

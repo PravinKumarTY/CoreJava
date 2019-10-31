@@ -1,0 +1,26 @@
+package com.testyantra.dao;
+
+import java.util.List;
+
+import com.testyantra.music.bean.MusicBean;
+
+public class MusicDAOImpl implements MusicDAO{
+
+	@Override
+	public List<MusicBean> getAllMusic() {
+		
+	}
+
+	/*@Override
+	public MusicBean getRandomMusic() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public MusicBean getParticularMusic() {
+		// TODO Auto-generated method stub
+		
+	}*/
+
+}

@@ -1,0 +1,27 @@
+package com.dev.dao;
+
+import com.dev.beans.User;
+
+public class UserDAOJDBCImpl implements UserInfoDAO{
+	
+	public UserDAOJDBCImpl() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static final String DBURL="jdbc:mysql://localhost:3306/ust_ty_db";
+
+	@Override
+	public User getAllInfo() {
+		return null;
+	}
+
+	@Override
+	public void createProfile(User user) {
+		
+	}
+
+}

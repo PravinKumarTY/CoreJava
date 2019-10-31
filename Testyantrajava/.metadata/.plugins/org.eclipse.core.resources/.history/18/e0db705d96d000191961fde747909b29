@@ -1,0 +1,20 @@
+package com.dev.collections;
+
+import com.dev.objectmethods.Dog;
+
+public class EmployeeMainClass {
+
+	public static void main(String[] args) {
+		EmployeeInterfaceImpl ei=new EmployeeInterfaceImpl();
+		Dog d=new Dog();
+		d.setAge(1);
+		d.setBreed("Zarman");
+		d.setColor("Black");
+		d.setName("Tommy");
+		boolean b=ei.addDog(d);
+		System.out.println(b);
+		ei.getDog();
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.dev.thread;
+
+public class Thread5 extends Thread{
+  Printer p;
+  public Thread5() {
+  }
+	
+  @Override
+	public void run() {
+		p.printVal(10,"Thread 4");
+	}
+}

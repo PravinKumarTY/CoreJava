@@ -1,0 +1,35 @@
+package com.dev.jdbc;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Properties;
+import java.util.Scanner;
+
+public class JDBCDeleteOperation {
+
+	public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      Connection conn=null;
+      PreparedStatement pstmt=null;
+      try {
+    	  //Load the Driver
+    	  Class.forName("com.mysql.jdbc.Driver");
+    	  //Get the Db Connection.
+    	  String dbUrl="jdbc:mysql://localhost:3306/ust_ty_db";
+    	  
+    	  String filePath="C:\\Users\\admin\\Desktop\\db.properties";
+    	  FileReader reader=new FileReader(filePath);
+    	  Properties prop=new Properties();
+    	  prop.load(reader);
+    	  DriverManager.getConnection(dbUrl,prop);
+    	  System.out.println("Connection estd..");
+    	  
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	}
+
+}

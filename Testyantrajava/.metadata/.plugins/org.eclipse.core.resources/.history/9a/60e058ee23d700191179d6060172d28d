@@ -1,0 +1,28 @@
+package com.testyantra.operation;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.testyantra.dao.MusicDAO;
+import com.testyantra.dao.MusicDAOImpl;
+import com.testyantra.music.bean.MusicBean;
+
+public class MusicOperation {
+
+	public static void main(String[] args) {
+		MusicDAO mdi=new MusicDAOImpl();
+		List<MusicBean> musicList=mdi.getAllMusic();
+		for(MusicBean music:musicList) {
+			System.out.println("SongId..:"+music.getSongId()+", Song Title..:"+music.getSongTitle()+", Artist Name..:"+music.getArtistName()+" ,Album Name..:"+music.getAlbumName()+" and Description..:"+music.getDescription());
+		}
+		Scanner sc=new Scanner(System.in);
+		do {
+			
+			
+			System.out.println("Press Y for continue and Press N for Exit");
+		}while()
+		
+
+	}
+
+}

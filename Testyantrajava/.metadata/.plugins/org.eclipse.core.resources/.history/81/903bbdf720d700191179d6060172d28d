@@ -1,0 +1,12 @@
+package com.testyantra.operation;
+
+import com.testyantra.dao.MusicDAOImpl;
+
+public class MusicOperation {
+
+	public static void main(String[] args) {
+		MusicDAOImpl mdi=new MusicDAOImpl();
+
+	}
+
+}

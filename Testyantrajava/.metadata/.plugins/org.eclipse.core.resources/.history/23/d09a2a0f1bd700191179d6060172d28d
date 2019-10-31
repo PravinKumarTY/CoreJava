@@ -1,0 +1,5 @@
+package com.testyantra.music.bean;
+
+public class MusicBean {
+
+}

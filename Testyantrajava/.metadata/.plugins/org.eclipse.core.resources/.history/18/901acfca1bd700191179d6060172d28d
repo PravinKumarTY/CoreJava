@@ -1,0 +1,7 @@
+package com.testyantra.dao;
+
+public interface MusicDAO {
+	public void getAllMusic();
+	public void getRandomMusic();
+	public void getParticularMusic();
+}

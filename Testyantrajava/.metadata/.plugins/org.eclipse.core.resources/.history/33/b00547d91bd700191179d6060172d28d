@@ -1,0 +1,11 @@
+package com.testyantra.dao;
+
+import java.util.List;
+
+import com.testyantra.music.bean.MusicBean;
+
+public interface MusicDAO {
+	public List<MusicBean> getAllMusic();
+	public void getRandomMusic();
+	public void getParticularMusic();
+}

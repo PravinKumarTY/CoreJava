@@ -1,0 +1,66 @@
+package com.testyantra.div;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class MusicPlayerOperation {
+
+	public static void main(String[] args) {
+		MusicPlayerOperationService mo=new MusicPlayerOperationService();
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Press 1 for Play Song.");
+		System.out.println("Press 2 for Search a song.");
+		System.out.println("Press 3 for Show All the songs.");
+		System.out.println("Presss 4 for to Operate Music Player.");
+		
+		System.out.println("Please Press any key..");
+		int choise=sc.nextInt();
+		switch (choise) {
+		case 1:
+			System.out.println("Press A for play All");
+			System.out.println("Press B for play Random ");
+			System.out.println("Press C for play particular song");
+			String playChoiseStr=sc.next();
+			char playMusicCh=playChoiseStr.charAt(0);
+			switch (playMusicCh) {
+			case 'A':
+				ResultSet rs=mo.getAllSongs();
+				try {
+					while (rs.next()) {
+						System.out.println("Id..:"+rs.getInt("song_id")+",  Album_Name..:"+rs.getString("song_title"));	
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				break;
+			case 'B':
+				break;
+			case 'C':
+				break;
+			default:
+				System.out.println("");
+				break;
+			}
+			
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			System.out.println("Press A for insert song");
+			System.out.println("Press B for edit song");
+			System.out.println("Press C for delete a song");
+			break;
+		default:
+			System.out.println("Invalid option.....");
+			break;
+		}
+		
+		
+
+	}
+
+}

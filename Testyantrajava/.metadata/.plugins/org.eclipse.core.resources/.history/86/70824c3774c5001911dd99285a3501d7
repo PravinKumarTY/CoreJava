@@ -1,0 +1,14 @@
+package com.dev.array;
+
+public class ArrayExample {
+	public static void main(String[] args) {
+		int []intArr; //declaration of array.
+		char[]chArr;
+		byte byteArr[];
+		intArr=new int[5];//creation of array.
+		chArr=new char[5];
+		byteArr=new byte[5];
+		
+		
+	}
+}

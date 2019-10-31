@@ -1,0 +1,137 @@
+package com.testyantra.div;
+
+import java.awt.RadialGradientPaint;
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
+import java.util.Random;
+
+import com.mysql.jdbc.Statement;
+
+public class MusicPlayerOperationService {
+	Connection conn=null;
+	String getAllSongsQuery=null;
+	String queryToPlayRandomSong=null;
+	String queryToPlayParticularSong=null;
+	String queryToInsertSong=null;
+	String queryToDeleteSong=null;
+	String queryToUpdateSong=null;
+	ResultSet rs=null;
+  public MusicPlayerOperationService() {
+	  try {
+		//Load the Driver   
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("Diver Loaded");
+		
+		String filePath="C:\\Users\\admin\\Desktop\\db.properties";
+		FileReader reader=new FileReader(filePath);
+		Properties prop=new Properties();
+		prop.load(reader);
+		String user=prop.getProperty("user");
+		System.out.println("User.."+user);
+		String password=prop.getProperty("password");
+		System.out.println("Passord...:"+password);
+		String dbUrl=prop.getProperty("dbUrl");	
+		getAllSongsQuery=prop.getProperty("queryToGetAllRec");
+		queryToPlayRandomSong=prop.getProperty("queryToPlayRandomSong");
+		queryToPlayParticularSong=prop.getProperty("queryToPlayParticularSong");
+		queryToInsertSong=prop.getProperty("queryToInsertSong");
+		queryToDeleteSong=prop.getProperty("queryToDeleteSong");
+		queryToUpdateSong=prop.getProperty("queryToUpdateSong");
+		conn=DriverManager.getConnection(dbUrl,prop);	
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+  }
+  
+  public ResultSet getAllSongs() {
+	  try {
+		rs=conn.createStatement().executeQuery(getAllSongsQuery);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 return rs; 
+  }
+  
+  public ResultSet playRandomSong() {
+	  try {
+		PreparedStatement pstmt=conn.prepareStatement(queryToPlayRandomSong);
+		pstmt.setInt(1,1002);
+		rs=pstmt.executeQuery();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	  return rs;
+  }
+  
+  public ResultSet getParticularSong(String song) {
+	try {
+		PreparedStatement pstmt=conn.prepareStatement(queryToPlayParticularSong);
+		pstmt.setString(1,song);
+		rs=pstmt.executeQuery();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	  return rs;
+  }
+  
+  public void insertSong(int song_id,String album_title,String artist_name,String album_name,String song_location,String description) {
+	  try {
+		PreparedStatement pstmt=conn.prepareStatement(queryToInsertSong);
+		pstmt.setInt(1,song_id);
+		pstmt.setString(2,album_title);
+		pstmt.setString(3,artist_name);
+		pstmt.setString(4,album_name);
+		pstmt.setString(5,song_location);
+		pstmt.setString(6,description);
+		int count=pstmt.executeUpdate();
+		if(count>0) {
+			System.out.println("Song added successfullly");
+		}else {
+			System.out.println("Song not added");
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	  
+  }
+  
+  public void deleteSong(int songid) {
+	  try {
+		PreparedStatement pstmt=conn.prepareStatement(queryToDeleteSong);
+		pstmt.setInt(1,songid);
+		int count=pstmt.executeUpdate();
+		if(count>0) {
+			System.out.println("Song deleted Successfully");
+		}else {
+			System.out.println("Not deleted");
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+  }
+  
+  public void updateSong(int song_id,String song) {
+	  try {
+		PreparedStatement pstmt=conn.prepareStatement(queryToUpdateSong);
+		pstmt.setInt(1,song_id);
+		pstmt.setString(2,song);
+		int count=pstmt.executeUpdate();
+		if(count>0) {
+			System.out.println("Song updated");
+		}else {
+			System.out.println("Song not updated.");
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+  }
+  
+  
+
+}

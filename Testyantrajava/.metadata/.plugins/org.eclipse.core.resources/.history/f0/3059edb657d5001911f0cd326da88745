@@ -1,0 +1,46 @@
+package com.dev.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.mysql.jdbc.Driver;
+
+public class MyFirstJDBC {
+
+	public static void main(String[] args) {
+		Connection conn=null;
+		Statement statement=null;
+		ResultSet rs=null;
+		try {
+			//Load the Driver.
+			java.sql.Driver div=new Driver();
+			DriverManager.registerDriver(div);
+			System.out.println("Driver Loaded..");
+			//Get Connection Via Driver..
+			String dbUrl="jdbc:mysql://localhost:3306/ust_ty_db?user=root&password=root";
+			conn=DriverManager.getConnection(dbUrl);
+			System.out.println("Connection Estd....");
+			
+			//Issue SQL query via Connection.
+			
+			String query="select * from users_info";
+			statement=conn.createStatement();
+			rs=statement.executeQuery(query);
+			
+			//Process the Results returned by SQL Query
+			while (rs.next()) {
+				int userId=rs.getInt("userid");
+				String userName=rs.getString("username");
+				String email=rs.getString("email");
+				System.out.println("UserId..:"+userId+", UserName..:"+userName+" and Email..:"+email);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

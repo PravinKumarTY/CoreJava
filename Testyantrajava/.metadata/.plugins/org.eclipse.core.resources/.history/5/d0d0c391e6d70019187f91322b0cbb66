@@ -1,0 +1,73 @@
+package com.testyantra.operation;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.testyantra.dao.MusicDAO;
+import com.testyantra.dao.MusicDAOImpl;
+import com.testyantra.music.bean.MusicBean;
+
+public class MusicOperation {
+
+	public static void main(String[] args) {
+		MusicDAO mdi=new MusicDAOImpl();
+		
+		
+		Scanner sc=new Scanner(System.in);
+		
+		String contine=null;
+		do {
+			System.out.println("Press 1 for Play Songs..");
+			System.out.println("Press 2 for Search a song..");
+			System.out.println("Press 3 for Show All the Songs..");
+			System.out.println("Press 4 for Perform operation for songs");
+			
+			int choise=sc.nextInt();
+			switch (choise) {
+			case 1:
+				System.out.println("Press A for Play All songs");
+				System.out.println("Press B for Play Random Song");
+				System.out.println("Press C for Play Particular song");
+				char choise1=sc.next().charAt(0);
+				switch (choise1) {
+				case 'A':
+					List<MusicBean> musicList=mdi.getAllMusic();
+					for(MusicBean music:musicList) {
+						System.out.println("SongId..:"+music.getSongId()+", Song Title..:"+music.getSongTitle()+", Artist Name..:"+music.getArtistName()+" ,Album Name..:"+music.getAlbumName()+" and Description..:"+music.getDescription());
+					}
+					break;
+				case 'B':
+					MusicBean music=mdi.getRandomMusic();
+					System.out.println("SongId..:"+music.getSongId()+", Song Title..:"+music.getSongTitle()+", Artist Name..:"+music.getArtistName()+" ,Album Name..:"+music.getAlbumName()+" and Description..:"+music.getDescription());
+					break;
+				case 'C':
+					System.out.println("Enter Music title");
+					String searchSong=sc.nextLine();
+					System.out.println("searchSong..:"+searchSong);
+					MusicBean music1=mdi.getParticularMusic(searchSong);
+					
+					System.out.println("SongId..:"+music1.getSongId()+", Song Title..:"+music1.getSongTitle()+", Artist Name..:"+music1.getArtistName()+" ,Album Name..:"+music1.getAlbumName()+" and Description..:"+music1.getDescription());
+					break;
+				default:
+					break;
+				}
+				break;
+
+			default:
+				break;
+			}
+			
+			
+			
+			
+			System.out.println("Press Y for continue and Press N for Exit");
+			contine=sc.next();
+			if(contine.charAt(0)=='N') {
+				break;
+			}
+		}while(contine.charAt(0)=='Y'||contine.charAt(0)=='y');
+		
+
+	}
+
+}

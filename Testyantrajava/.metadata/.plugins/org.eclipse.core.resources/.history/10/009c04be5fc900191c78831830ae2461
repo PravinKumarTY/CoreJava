@@ -1,0 +1,8 @@
+package com.dev.abstraction;
+
+public abstract class AbstractExample {
+  abstract void display();
+  public void shoiw() {
+	  System.out.println("Concrete method of abstract class.");
+  }
+}

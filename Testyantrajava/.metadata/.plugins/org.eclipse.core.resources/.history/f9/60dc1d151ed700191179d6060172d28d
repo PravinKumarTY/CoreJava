@@ -1,0 +1,52 @@
+package com.testyantra.dao;
+
+import java.io.FileReader;
+import java.util.List;
+import java.util.Properties;
+
+import com.testyantra.music.bean.MusicBean;
+
+public class MusicDAOImpl{
+	
+	public MusicDAOImpl() {
+		try {
+			//Load the Driver class.
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("Diver class loaded..");
+			
+			//Get the Db Conncetion.
+			String filePath="C:\\Users\\admin\\Desktop\\db.properties";
+			FileReader reader=new FileReader(filePath);
+			Properties prop=new Properties();
+			prop.load(reader);
+			
+			String dbUrl=prop.getProperty("dbUrl");
+			System.out.println(dbUrl);
+			String user=prop.getProperty("user");
+			System.out.println(user);
+			String password=prop.getProperty("password");
+			System.out.println(password);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/*@Override
+	public List<MusicBean> getAllMusic() {
+		
+		
+	}*/
+
+	/*@Override
+	public MusicBean getRandomMusic() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public MusicBean getParticularMusic() {
+		// TODO Auto-generated method stub
+		
+	}*/
+
+}

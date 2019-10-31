@@ -1,0 +1,18 @@
+package com.dev.jdbc;
+
+import java.sql.SQLException;
+
+import com.mysql.jdbc.Driver;
+
+public class MyFirstJDBC {
+
+	public static void main(String[] args) {
+		try {
+			//Load the Driver.
+			java.sql.Driver div=new Driver();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

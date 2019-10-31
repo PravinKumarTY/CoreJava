@@ -1,0 +1,24 @@
+package com.dev.jdbc;
+
+import java.sql.DriverManager;
+
+public class JdbcUpdateOperation {
+
+	public static void main(String[] args) {
+		
+		try {
+			//Load the Driver..
+			Class.forName("com.mysql.jdbc.Driver");
+			//Get the Db Connection..
+			String dbUrl="jdbc:mysql://localhost:3306/ust_ty_db";
+			DriverManager.getConnection(dbUrl,"root","root");
+			System.out.println("Contion Estd..");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

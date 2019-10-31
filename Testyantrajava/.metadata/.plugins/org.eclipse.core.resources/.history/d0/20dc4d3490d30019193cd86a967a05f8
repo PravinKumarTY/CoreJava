@@ -1,0 +1,13 @@
+package com.dev.lambdaexpression;
+
+public class Test{
+
+	public static void main(String[] args) {
+	    FuncInt f=()->{
+	    	for(int i=1; i<=10; i++) {
+	    		System.out.println("i="+i);
+	    	}
+	    };
+	}
+
+}
